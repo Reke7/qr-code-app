@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "ea2ae6beba2c93da3039ed3a90d1dc8a"
+name = "QR-Code App"
+handle = "qr-code-app-325"
+application_url = "https://requires-discs-furnished-eagle.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://requires-discs-furnished-eagle.trycloudflare.com/auth/callback",
+  "https://requires-discs-furnished-eagle.trycloudflare.com/auth/shopify/callback",
+  "https://requires-discs-furnished-eagle.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
