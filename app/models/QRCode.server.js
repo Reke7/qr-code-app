@@ -16,3 +16,8 @@ export async function getQRCodes(shop, graphql){
 
     return Promise.all(qrCodes.map((qrCode) => supplementQRCode(qrCode, graphql)));
 }
+
+export function getQRCodeImage(id) {
+    const url = new URL(`/qrcodes/${id}/scan`, process.env.SHOPIFY_APP_URL);
+    return qrcode.toDataURL(url.href);
+}
